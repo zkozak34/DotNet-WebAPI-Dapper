@@ -1,5 +1,4 @@
-﻿using Bootcamp.WebAPI.Core.Aspects;
-using Bootcamp.WebAPI.DTOs.ResponseDto;
+﻿using Bootcamp.WebAPI.DTOs.ResponseDto;
 using Bootcamp.WebAPI.Repositories;
 using MediatR;
 
@@ -14,7 +13,6 @@ namespace Bootcamp.WebAPI.Queries.Product.Get
             _productRepository = productRepository;
         }
 
-        [LoggerAspect]
         public async Task<ResponseDto<List<Models.Product>>> Handle(ProductGetAllQuery request, CancellationToken cancellationToken)
         {
             var responseFromRepository = await _productRepository.GetAll();
