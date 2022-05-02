@@ -1,6 +1,7 @@
 ﻿using Bootcamp.WebAPI.Commands.Product.Add;
 using Bootcamp.WebAPI.Commands.Product.Delete;
 using Bootcamp.WebAPI.Commands.Product.Update;
+using Bootcamp.WebAPI.Core.Aspects;
 using Bootcamp.WebAPI.DTOs;
 using Bootcamp.WebAPI.Filters;
 using Bootcamp.WebAPI.Queries.Product.Get;

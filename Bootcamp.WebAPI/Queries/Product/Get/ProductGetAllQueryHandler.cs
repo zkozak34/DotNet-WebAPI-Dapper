@@ -1,6 +1,8 @@
-﻿using Bootcamp.WebAPI.DTOs.ResponseDto;
+﻿using Bootcamp.WebAPI.Core.Aspects;
+using Bootcamp.WebAPI.DTOs.ResponseDto;
 using Bootcamp.WebAPI.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Bootcamp.WebAPI.Queries.Product.Get
 {
