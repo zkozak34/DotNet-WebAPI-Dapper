@@ -1,0 +1,17 @@
+CREATE OR REPLACE PROCEDURE sp_transfer (
+	sender int,
+	receiver int,
+	amount numeric(18,2)
+)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+UPDATE accounts SET price=price-amount WHERE id=sender;
+UPDATE accounts SET price=price+amount WHERE id=receiver;
+COMMIT;
+END; $$
+
+SELECT * FROM accounts
+INSERT INTO accounts(name,price) values('Zeynel',1000),('Ygmr',1000)
+
+CALL sp_transfer(1,2,50)

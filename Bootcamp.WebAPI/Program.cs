@@ -9,11 +9,12 @@ using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using System.Data;
 using System.Reflection;
+using Bootcamp.WebAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+// Add services to the container.
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => { builder.RegisterModule(new AutofacBusinessModule()); });
-// Add services to the container.
 
 builder.Services.AddControllers(options => options.Filters.Add(new ValidateFilter())).AddFluentValidation(x => x.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
 builder.Services.Configure<ApiBehaviorOptions>(options =>
@@ -27,11 +28,15 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddScoped<IProductRepository, ProductRepository>();
 //builder.Services.AddScoped<CheckProductIdActionFilter>();
 
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-
 builder.Services.AddScoped<IDbConnection>(serviceProvider => new NpgsqlConnection(builder.Configuration.GetConnectionString("Postgresql")));
-
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddScoped<IDbTransaction>(serviceProvider =>
+{
+    var connection = serviceProvider.GetRequiredService<IDbConnection>();
+    connection.Open();
+    return connection.BeginTransaction();
+});
 
 var app = builder.Build();
 

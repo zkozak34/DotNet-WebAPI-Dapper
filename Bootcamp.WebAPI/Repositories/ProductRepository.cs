@@ -1,22 +1,25 @@
 ﻿using Bootcamp.WebAPI.Models;
 using Dapper;
 using System.Data;
+using Bootcamp.WebAPI.Commands.Transfer;
 
 namespace Bootcamp.WebAPI.Repositories
 {
     public class ProductRepository : IProductRepository
     {
         private readonly IDbConnection _connection;
+        private readonly IDbTransaction _transaction;
 
-        public ProductRepository(IDbConnection connection)
+        public ProductRepository(IDbConnection connection, IDbTransaction transaction)
         {
             _connection = connection;
+            _transaction = transaction;
         }
 
         public async Task<List<Product>> GetAll()
         {
             var query = "select * from products order by id asc";
-            var products = await _connection.QueryAsync<Product>(query);
+            var products = await _connection.QueryAsync<Product>(query,transaction:_transaction);
             return products.ToList();
         }
 
@@ -54,6 +57,27 @@ namespace Bootcamp.WebAPI.Repositories
             var query = $"select * from products order by id asc offset {(page - 1) * pagesize} limit {pagesize}";
             var response = await _connection.QueryAsync<Product>(query);
             return response.ToList();
+        }
+
+        public async Task<bool> TransferByStoreProcedure(AccountTransferCommand accountTransferCommand)
+        {
+            var sp =
+                $"call sp_transfer({accountTransferCommand.Sender},{accountTransferCommand.Receiver},{accountTransferCommand.Amount})";
+            return await _connection.ExecuteAsync(sp) > 0;
+        }
+
+        public async Task<bool> Transfer(AccountTransferCommand accountTransferCommand)
+        {
+            using (var transaction = _connection.BeginTransaction())
+            {
+                var sql1 = "UPDATE accounts SET price = price - @amount WHERE id = @sender";
+                var sql2 = "UPDATE accounts SET price = price + @amount WHERE id = @receiver";
+                    
+                await _connection.ExecuteAsync(sql1, accountTransferCommand);
+                await _connection.ExecuteAsync(sql2, accountTransferCommand);
+                transaction.Commit();
+                return true;
+            }
         }
     } 
 }

@@ -1,4 +1,5 @@
-﻿using Bootcamp.WebAPI.Models;
+﻿using Bootcamp.WebAPI.Commands.Transfer;
+using Bootcamp.WebAPI.Models;
 
 namespace Bootcamp.WebAPI.Repositories
 {
@@ -10,5 +11,9 @@ namespace Bootcamp.WebAPI.Repositories
         Task<bool> Delete(int id);
         Task<bool> Update(Product product);
         Task<List<Product>> GetWithPage(int page, int pagesize);
+
+        Task<bool> TransferByStoreProcedure(AccountTransferCommand accountTransferCommand);
+
+        Task<bool> Transfer(AccountTransferCommand accountTransferCommand);
     }
 }

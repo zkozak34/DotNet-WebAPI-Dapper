@@ -14,6 +14,7 @@ namespace Bootcamp.WebAPI.Services.DependecyResolvers.Autofac
         {
             builder.RegisterType<ProductRepository>().As<IProductRepository>().InstancePerLifetimeScope();
             builder.RegisterType<CheckProductIdActionFilter>().InstancePerLifetimeScope();
+            builder.RegisterType<AccountRepository>().As<IAccountRepository>().InstancePerLifetimeScope();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces().EnableInterfaceInterceptors(

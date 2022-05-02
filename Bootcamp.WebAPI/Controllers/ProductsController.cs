@@ -1,6 +1,7 @@
 ﻿using Bootcamp.WebAPI.Commands.Product.Add;
 using Bootcamp.WebAPI.Commands.Product.Delete;
 using Bootcamp.WebAPI.Commands.Product.Update;
+using Bootcamp.WebAPI.Commands.Transfer;
 using Bootcamp.WebAPI.Core.Aspects;
 using Bootcamp.WebAPI.DTOs;
 using Bootcamp.WebAPI.Filters;
@@ -68,6 +69,13 @@ namespace Bootcamp.WebAPI.Controllers
         public async Task<IActionResult> GetWithPage([FromQuery] int page, int pagesize)
         {
             var response = await _mediator.Send(new ProductGetPageQuery() {Page = page, PageSize = pagesize});
+            return new ObjectResult(response) {StatusCode = response.StatusCode};
+        }
+
+        [HttpPost("transfer")]
+        public async Task<IActionResult> TransferAccount(AccountTransferCommand accountTransferCommand)
+        {
+            var response = await _mediator.Send(accountTransferCommand);
             return new ObjectResult(response) {StatusCode = response.StatusCode};
         }
     }
