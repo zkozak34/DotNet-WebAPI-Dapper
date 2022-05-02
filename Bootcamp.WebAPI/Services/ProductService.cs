@@ -1,8 +1,9 @@
 ﻿using Bootcamp.WebAPI.DTOs;
 using Bootcamp.WebAPI.DTOs.ResponseDto;
+using Bootcamp.WebAPI.Models;
 using Bootcamp.WebAPI.Repositories;
 
-namespace Bootcamp.WebAPI.Models.Services
+namespace Bootcamp.WebAPI.Services
 {
     public class ProductService : IProductService
     {

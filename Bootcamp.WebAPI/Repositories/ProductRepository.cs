@@ -1,7 +1,6 @@
-﻿using System.Data;
-using Bootcamp.WebAPI.Models;
+﻿using Bootcamp.WebAPI.Models;
 using Dapper;
-using Npgsql.Replication.PgOutput.Messages;
+using System.Data;
 
 namespace Bootcamp.WebAPI.Repositories
 {
@@ -13,15 +12,6 @@ namespace Bootcamp.WebAPI.Repositories
         {
             _connection = connection;
         }
-
-        private static List<Product> _products = new List<Product>()
-        {
-            new Product() {Id = 1, Name = "Product 1", Price = 100, Stock = 10},
-            new Product() {Id = 2, Name = "Product 2", Price = 200, Stock = 15},
-            new Product() {Id = 3, Name = "Product 3", Price = 200, Stock = 15},
-            new Product() {Id = 4, Name = "Product 4", Price = 300, Stock = 18},
-            new Product() {Id = 5, Name = "Product 5", Price = 400, Stock = 19},
-        };
 
         public async Task<List<Product>> GetAll()
         {

@@ -1,8 +1,8 @@
 ﻿using Bootcamp.WebAPI.DTOs;
 using Bootcamp.WebAPI.DTOs.ResponseDto;
-using Microsoft.AspNetCore.Mvc;
+using Bootcamp.WebAPI.Models;
 
-namespace Bootcamp.WebAPI.Models.Services
+namespace Bootcamp.WebAPI.Services
 {
     public interface IProductService
     {

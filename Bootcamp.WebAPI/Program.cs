@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using System.Data;
 using System.Reflection;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Bootcamp.WebAPI.Services.DependecyResolvers.Autofac;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => { builder.RegisterModule(new AutofacBusinessModule()); });
 // Add services to the container.
 
 builder.Services.AddControllers(options => options.Filters.Add(new ValidateFilter())).AddFluentValidation(x => x.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
@@ -21,8 +24,10 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<CheckProductIdActionFilter>();
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+
+//builder.Services.AddScoped<IProductRepository, ProductRepository>();
+//builder.Services.AddScoped<CheckProductIdActionFilter>();
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
