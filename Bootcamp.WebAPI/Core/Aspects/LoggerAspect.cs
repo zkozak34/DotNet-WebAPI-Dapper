@@ -8,12 +8,12 @@ namespace Bootcamp.WebAPI.Core.Aspects
     {
         protected override void OnBefore(IInvocation invocation)
         {
-           Debug.WriteLine("OnBefore Logger Aspect");
+           Console.WriteLine("OnBefore Logger Aspect");
         }
 
         protected override void OnAfter(IInvocation invocation)
         {
-            Debug.WriteLine("OnAfter Logger Aspect");
+            Console.WriteLine("OnAfter Logger Aspect");
         }
     }
 }

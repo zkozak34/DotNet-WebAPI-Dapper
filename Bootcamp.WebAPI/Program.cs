@@ -1,17 +1,17 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using Bootcamp.WebAPI.Filters;
 using Bootcamp.WebAPI.Middlewares;
-using Bootcamp.WebAPI.Repositories;
+using Bootcamp.WebAPI.Services.DependecyResolvers.Autofac;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using System.Data;
 using System.Reflection;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using Bootcamp.WebAPI.Services.DependecyResolvers.Autofac;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => { builder.RegisterModule(new AutofacBusinessModule()); });
 // Add services to the container.
 
@@ -23,8 +23,6 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
 //builder.Services.AddScoped<IProductRepository, ProductRepository>();
 //builder.Services.AddScoped<CheckProductIdActionFilter>();
