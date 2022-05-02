@@ -1,0 +1,15 @@
+--select * from products 
+--select * from products order by id asc --desc
+--select * from products offset 1 limit 3
+--insert into products(name, price, stock, categoryid) values('Ürün 1',10.99,10,1),('Ürün 2',30.99,20,1),('Ürün 3',30.99,40,2),('Ürün 4',40.99,40,3),('Ürün 5',50.99,50,3)
+--delete from products
+
+--select * from categories
+--insert into categories(name) values('Kalem'),('Masa'),('Bilgisayar'),('Telefon')
+
+--select * from productfeature
+--insert into productfeature(id) values(10)
+
+--select * from products p inner join categories c on p.categoryid = c.id
+--select * from products p cross join categories c 
+select c.name, count(*) from products p inner join categories c on p.categoryid = c.id group by c.id having count(*)>1
