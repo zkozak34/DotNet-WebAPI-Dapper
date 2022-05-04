@@ -13,7 +13,7 @@ namespace Bootcamp.WebAPI.Repositories
         Task<List<Product>> GetWithPage(int page, int pagesize);
 
         Task<bool> TransferByStoreProcedure(AccountTransferCommand accountTransferCommand);
-
         Task<bool> Transfer(AccountTransferCommand accountTransferCommand);
+        Task<int> TotalCountByFunction();
     }
 }

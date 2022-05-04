@@ -5,6 +5,7 @@ using Bootcamp.WebAPI.Commands.Transfer;
 using Bootcamp.WebAPI.Core.Aspects;
 using Bootcamp.WebAPI.DTOs;
 using Bootcamp.WebAPI.Filters;
+using Bootcamp.WebAPI.Queries.Product.Count;
 using Bootcamp.WebAPI.Queries.Product.Get;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -77,6 +78,13 @@ namespace Bootcamp.WebAPI.Controllers
         {
             var response = await _mediator.Send(accountTransferCommand);
             return new ObjectResult(response) {StatusCode = response.StatusCode};
+        }
+
+        [HttpGet("gettotalcount")]
+        public async Task<IActionResult> GetTotalCount()
+        {
+            var response = await _mediator.Send(new ProductCountQuery());
+            return new ObjectResult(response) { StatusCode = response.StatusCode };
         }
     }
 }

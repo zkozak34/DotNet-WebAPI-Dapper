@@ -38,6 +38,9 @@ builder.Services.AddScoped<IDbTransaction>(serviceProvider =>
     return connection.BeginTransaction();
 });
 
+builder.Services.AddScoped<UnitOfWork>(); //TODO: silinecek
+
+
 var app = builder.Build();
 
 app.UseGlobalExceptionHandleMiddleware();

@@ -1,7 +1,7 @@
-﻿using Bootcamp.WebAPI.Models;
+﻿using Bootcamp.WebAPI.Commands.Transfer;
+using Bootcamp.WebAPI.Models;
 using Dapper;
 using System.Data;
-using Bootcamp.WebAPI.Commands.Transfer;
 
 namespace Bootcamp.WebAPI.Repositories
 {
@@ -19,7 +19,7 @@ namespace Bootcamp.WebAPI.Repositories
         public async Task<List<Product>> GetAll()
         {
             var query = "select * from products order by id asc";
-            var products = await _connection.QueryAsync<Product>(query,transaction:_transaction);
+            var products = await _connection.QueryAsync<Product>(query, transaction: _transaction);
             return products.ToList();
         }
 
@@ -33,7 +33,7 @@ namespace Bootcamp.WebAPI.Repositories
         public async Task<bool> Save(Product product)
         {
             var query = $"insert into products(name, price, stock, categoryid) values(@name,@price,@stock,@categoryid)";
-            var response = await _connection.ExecuteAsync(query,new {name=product.Name, price=product.Price, stock=product.Stock, categoryid=product.CategoryId});
+            var response = await _connection.ExecuteAsync(query, new { name = product.Name, price = product.Price, stock = product.Stock, categoryid = product.CategoryId });
             return response == 1 ? true : false;
         }
 
@@ -48,7 +48,7 @@ namespace Bootcamp.WebAPI.Repositories
         {
             var query =
                 $"update products set name=@name, price=@price, stock=@stock, categoryid=@categoryid where id={product.Id}";
-            var response = await _connection.ExecuteAsync(query,new {name=product.Name,price=product.Price,stock=product.Stock,categoryid=product.CategoryId});
+            var response = await _connection.ExecuteAsync(query, new { name = product.Name, price = product.Price, stock = product.Stock, categoryid = product.CategoryId });
             return response == 1 ? true : false;
         }
 
@@ -72,12 +72,20 @@ namespace Bootcamp.WebAPI.Repositories
             {
                 var sql1 = "UPDATE accounts SET price = price - @amount WHERE id = @sender";
                 var sql2 = "UPDATE accounts SET price = price + @amount WHERE id = @receiver";
-                    
+
                 await _connection.ExecuteAsync(sql1, accountTransferCommand);
                 await _connection.ExecuteAsync(sql2, accountTransferCommand);
                 transaction.Commit();
                 return true;
             }
         }
-    } 
+
+        public async Task<int> TotalCountByFunction()
+        {
+            //var query = "func_product_count";
+            var query = "func_product_count_sum_category";
+            var result = await _connection.ExecuteScalarAsync<int>(query, new {category_id=1}, commandType: CommandType.StoredProcedure);
+            return result;
+        }
+    }
 }
