@@ -1,4 +1,4 @@
-﻿using Bootcamp.Entities.Entities.Concrete;
+﻿using Bootcamp.Entities.Concrete;
 
 namespace Bootcamp.Entities.Dtos
 {

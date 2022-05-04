@@ -1,7 +1,8 @@
-﻿using Dapper;
-using System.Data;
+﻿using System.Data;
+using Bootcamp.Repository.Abstract;
+using Dapper;
 
-namespace Bootcamp.Repository.Repositories
+namespace Bootcamp.Repository.Concrete
 {
     public class AccountRepository : IAccountRepository
     {

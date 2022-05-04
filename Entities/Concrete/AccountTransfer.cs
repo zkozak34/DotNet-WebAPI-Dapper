@@ -1,4 +1,4 @@
-﻿namespace Bootcamp.Entities.Entities.Concrete
+﻿namespace Bootcamp.Entities.Concrete
 {
     public class AccountTransfer
     {

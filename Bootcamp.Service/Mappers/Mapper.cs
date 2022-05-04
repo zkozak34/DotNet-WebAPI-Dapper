@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Bootcamp.Entities.Concrete;
 using Bootcamp.Entities.Dtos;
-using Bootcamp.Entities.Entities.Concrete;
 
 namespace Bootcamp.Service.Mappers
 {

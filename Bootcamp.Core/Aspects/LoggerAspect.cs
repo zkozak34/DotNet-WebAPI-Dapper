@@ -1,7 +1,7 @@
 ﻿using Bootcamp.Core.Utilities.Interceptor;
 using Castle.DynamicProxy;
 
-namespace Bootcamp.Core.Utilities.Aspects
+namespace Bootcamp.Core.Aspects
 {
     public class LoggerAspect : MethodInterception
     {

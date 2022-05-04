@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace Bootcamp.Repository.Repositories
+namespace Bootcamp.Repository.Concrete
 {
     public class UnitOfWork
     {

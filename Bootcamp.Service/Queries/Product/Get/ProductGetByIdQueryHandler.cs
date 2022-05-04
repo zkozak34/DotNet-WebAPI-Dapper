@@ -1,11 +1,11 @@
-﻿using Bootcamp.Core.Dtos.ResponseDto;
-using Bootcamp.Core.Utilities.Aspects;
-using Bootcamp.Repository.Repositories;
+﻿using Bootcamp.Core.Aspects;
+using Bootcamp.Core.Dtos.ResponseDto;
+using Bootcamp.Repository.Abstract;
 using MediatR;
 
 namespace Bootcamp.Service.Queries.Product.Get
 {
-    public class ProductGetByIdQueryHandler : IRequestHandler<ProductGetByIdQuery, ResponseDto<Entities.Entities.Concrete.Product>>
+    public class ProductGetByIdQueryHandler : IRequestHandler<ProductGetByIdQuery, ResponseDto<Entities.Concrete.Product>>
     {
         private readonly IProductRepository _productRepository;
 
@@ -15,14 +15,14 @@ namespace Bootcamp.Service.Queries.Product.Get
         }
 
         [LoggerAspect]
-        public async Task<ResponseDto<Entities.Entities.Concrete.Product>> Handle(ProductGetByIdQuery request, CancellationToken cancellationToken)
+        public async Task<ResponseDto<Entities.Concrete.Product>> Handle(ProductGetByIdQuery request, CancellationToken cancellationToken)
         {
             var responseFromRepository = await _productRepository.GetById(request.Id);
             if (responseFromRepository == null)
             {
-                return ResponseDto<Entities.Entities.Concrete.Product>.Fail(500);
+                return ResponseDto<Entities.Concrete.Product>.Fail(500);
             }
-            return ResponseDto<Entities.Entities.Concrete.Product>.Success(responseFromRepository, 200);
+            return ResponseDto<Entities.Concrete.Product>.Success(responseFromRepository, 200);
         }
     }
 }

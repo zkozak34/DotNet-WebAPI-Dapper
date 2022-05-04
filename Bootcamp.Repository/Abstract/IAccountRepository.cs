@@ -1,4 +1,4 @@
-﻿namespace Bootcamp.Repository.Repositories
+﻿namespace Bootcamp.Repository.Abstract
 {
     public interface IAccountRepository
     {

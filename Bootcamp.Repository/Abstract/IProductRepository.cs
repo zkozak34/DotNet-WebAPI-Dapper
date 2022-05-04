@@ -1,6 +1,6 @@
-﻿using Bootcamp.Entities.Entities.Concrete;
+﻿using Bootcamp.Entities.Concrete;
 
-namespace Bootcamp.Repository.Repositories
+namespace Bootcamp.Repository.Abstract
 {
     public interface IProductRepository
     {

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Bootcamp.Core.Dtos.ResponseDto;
-using Bootcamp.Repository.Repositories;
+using Bootcamp.Repository.Abstract;
 using MediatR;
 
 namespace Bootcamp.Service.Commands.Product.Add
@@ -18,7 +18,7 @@ namespace Bootcamp.Service.Commands.Product.Add
 
         public async Task<ResponseDto<NoContent>> Handle(ProductAddCommand request, CancellationToken cancellationToken)
         {
-            var responseFromDatabase = await _productRepository.Save(new Entities.Entities.Concrete.Product() { Name = request.Name, Price = request.Price, Stock = request.Stock, CategoryId = request.CategoryId });
+            var responseFromDatabase = await _productRepository.Save(new Entities.Concrete.Product() { Name = request.Name, Price = request.Price, Stock = request.Stock, CategoryId = request.CategoryId });
             //ISubject subject = new ProductCreated();
             //subject.Attach(new EmailObserver());
             //subject.Notify();

@@ -1,8 +1,8 @@
 ﻿using Bootcamp.Core.Dtos.ResponseDto;
+using Bootcamp.Entities.Concrete;
 using Bootcamp.Entities.Dtos;
-using Bootcamp.Entities.Entities.Concrete;
 
-namespace Bootcamp.Service.Services
+namespace Bootcamp.Service.Services.Abstract
 {
     public interface IProductService
     {

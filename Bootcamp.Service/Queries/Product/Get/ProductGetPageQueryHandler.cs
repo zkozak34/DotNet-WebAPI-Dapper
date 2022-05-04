@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Bootcamp.Core.Dtos.ResponseDto;
 using Bootcamp.Entities.Dtos;
-using Bootcamp.Repository.Repositories;
+using Bootcamp.Repository.Abstract;
 using MediatR;
 
 namespace Bootcamp.Service.Queries.Product.Get

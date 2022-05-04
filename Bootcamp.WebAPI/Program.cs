@@ -1,6 +1,5 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Bootcamp.Repository.Repositories;
 using Bootcamp.Service.DependecyResolvers.Autofac;
 using Bootcamp.WebAPI.Filters;
 using Bootcamp.WebAPI.Middlewares;
@@ -10,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using System.Data;
 using System.Reflection;
+using Bootcamp.Repository.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.

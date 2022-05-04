@@ -1,8 +1,9 @@
-﻿using Bootcamp.Entities.Entities.Concrete;
+﻿using System.Data;
+using Bootcamp.Entities.Concrete;
+using Bootcamp.Repository.Abstract;
 using Dapper;
-using System.Data;
 
-namespace Bootcamp.Repository.Repositories
+namespace Bootcamp.Repository.Concrete
 {
     public class ProductRepository : IProductRepository
     {

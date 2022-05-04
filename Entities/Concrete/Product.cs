@@ -1,6 +1,6 @@
-﻿using Bootcamp.Entities.Entities.Abstract;
+﻿using Bootcamp.Entities.Abstract;
 
-namespace Bootcamp.Entities.Entities.Concrete
+namespace Bootcamp.Entities.Concrete
 {
     public class Product : IEntity
     {

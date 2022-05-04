@@ -1,5 +1,5 @@
 ﻿using Bootcamp.Core.Dtos.ResponseDto;
-using Bootcamp.Repository.Repositories;
+using Bootcamp.Repository.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

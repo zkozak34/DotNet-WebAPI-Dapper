@@ -1,9 +1,10 @@
 ﻿using Bootcamp.Core.Dtos.ResponseDto;
+using Bootcamp.Entities.Concrete;
 using Bootcamp.Entities.Dtos;
-using Bootcamp.Entities.Entities.Concrete;
-using Bootcamp.Repository.Repositories;
+using Bootcamp.Repository.Abstract;
+using Bootcamp.Service.Services.Abstract;
 
-namespace Bootcamp.Service.Services
+namespace Bootcamp.Service.Services.Concrete
 {
     public class ProductService : IProductService
     {

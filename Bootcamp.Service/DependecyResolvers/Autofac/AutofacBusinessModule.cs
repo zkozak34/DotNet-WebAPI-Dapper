@@ -1,7 +1,8 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Bootcamp.Core.Utilities.Interceptor;
-using Bootcamp.Repository.Repositories;
+using Bootcamp.Repository.Abstract;
+using Bootcamp.Repository.Concrete;
 using Castle.DynamicProxy;
 
 namespace Bootcamp.Service.DependecyResolvers.Autofac

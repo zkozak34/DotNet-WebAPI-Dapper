@@ -1,7 +1,7 @@
 ﻿using Bootcamp.Entities.Dtos;
 using FluentValidation;
 
-namespace Bootcamp.Service.Validators
+namespace Bootcamp.Service.ValidationRules
 {
     public class ProductValidator : AbstractValidator<ProductDto>
     {

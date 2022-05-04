@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Bootcamp.Service.Queries.Product.Get
 {
-    public class ProductGetAllQuery : IRequest<ResponseDto<List<Entities.Entities.Concrete.Product>>>
+    public class ProductGetAllQuery : IRequest<ResponseDto<List<Entities.Concrete.Product>>>
     {
     }
 }
