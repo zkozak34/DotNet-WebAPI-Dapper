@@ -1,4 +1,4 @@
-﻿using Bootcamp.WebAPI.DTOs.ResponseDto;
+﻿using Bootcamp.Core.Dtos.ResponseDto;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

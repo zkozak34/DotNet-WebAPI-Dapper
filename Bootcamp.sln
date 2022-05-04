@@ -3,7 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.WebAPI", "Bootcamp.WebAPI\Bootcamp.WebAPI.csproj", "{2DA4E551-09B8-4DD3-8C1A-8020CC70E93C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootcamp.WebAPI", "Bootcamp.WebAPI\Bootcamp.WebAPI.csproj", "{2DA4E551-09B8-4DD3-8C1A-8020CC70E93C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.Core", "Bootcamp.Core\Bootcamp.Core.csproj", "{99813BBA-B4C9-42E9-9236-9B91589C2C39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.Repository", "Bootcamp.Repository\Bootcamp.Repository.csproj", "{947831A4-935F-4CAE-AC57-CDBA74CD9150}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.Service", "Bootcamp.Service\Bootcamp.Service.csproj", "{ABC540F8-C725-425A-86B0-D40373938599}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CB5BAA74-16CA-4CFD-91BB-A1F48FB835DD} = {CB5BAA74-16CA-4CFD-91BB-A1F48FB835DD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootcamp.Entities", "Entities\Bootcamp.Entities.csproj", "{CB5BAA74-16CA-4CFD-91BB-A1F48FB835DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +26,22 @@ Global
 		{2DA4E551-09B8-4DD3-8C1A-8020CC70E93C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DA4E551-09B8-4DD3-8C1A-8020CC70E93C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DA4E551-09B8-4DD3-8C1A-8020CC70E93C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99813BBA-B4C9-42E9-9236-9B91589C2C39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99813BBA-B4C9-42E9-9236-9B91589C2C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99813BBA-B4C9-42E9-9236-9B91589C2C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99813BBA-B4C9-42E9-9236-9B91589C2C39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{947831A4-935F-4CAE-AC57-CDBA74CD9150}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947831A4-935F-4CAE-AC57-CDBA74CD9150}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947831A4-935F-4CAE-AC57-CDBA74CD9150}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{947831A4-935F-4CAE-AC57-CDBA74CD9150}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABC540F8-C725-425A-86B0-D40373938599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC540F8-C725-425A-86B0-D40373938599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC540F8-C725-425A-86B0-D40373938599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC540F8-C725-425A-86B0-D40373938599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB5BAA74-16CA-4CFD-91BB-A1F48FB835DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB5BAA74-16CA-4CFD-91BB-A1F48FB835DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB5BAA74-16CA-4CFD-91BB-A1F48FB835DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB5BAA74-16CA-4CFD-91BB-A1F48FB835DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

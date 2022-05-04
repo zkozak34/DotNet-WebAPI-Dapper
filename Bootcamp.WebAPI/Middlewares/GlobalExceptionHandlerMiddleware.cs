@@ -1,5 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-using Bootcamp.WebAPI.DTOs.ResponseDto;
+﻿using Bootcamp.Core.Dtos.ResponseDto;
 using Microsoft.AspNetCore.Diagnostics;
 
 namespace Bootcamp.WebAPI.Middlewares

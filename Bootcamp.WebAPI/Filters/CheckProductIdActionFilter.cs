@@ -1,11 +1,11 @@
-﻿using Bootcamp.WebAPI.DTOs.ResponseDto;
-using Bootcamp.WebAPI.Repositories;
+﻿using Bootcamp.Core.Dtos.ResponseDto;
+using Bootcamp.Repository.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace Bootcamp.WebAPI.Filters
 {
-    public class CheckProductIdActionFilter: ActionFilterAttribute
+    public class CheckProductIdActionFilter : ActionFilterAttribute
     {
         private readonly IProductRepository _productRepository;
 

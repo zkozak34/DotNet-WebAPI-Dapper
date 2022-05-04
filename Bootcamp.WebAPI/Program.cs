@@ -1,15 +1,15 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Bootcamp.Repository.Repositories;
+using Bootcamp.Service.DependecyResolvers.Autofac;
 using Bootcamp.WebAPI.Filters;
 using Bootcamp.WebAPI.Middlewares;
-using Bootcamp.WebAPI.Services.DependecyResolvers.Autofac;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using System.Data;
 using System.Reflection;
-using Bootcamp.WebAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -26,7 +26,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //builder.Services.AddScoped<IProductRepository, ProductRepository>();
-//builder.Services.AddScoped<CheckProductIdActionFilter>();
+builder.Services.AddScoped<CheckProductIdActionFilter>();
 
 builder.Services.AddScoped<IDbConnection>(serviceProvider => new NpgsqlConnection(builder.Configuration.GetConnectionString("Postgresql")));
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
