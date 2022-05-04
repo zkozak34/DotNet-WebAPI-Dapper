@@ -1,6 +1,6 @@
-﻿using System.Data;
-using Bootcamp.Repository.Abstract;
+﻿using Bootcamp.Repository.Abstract;
 using Dapper;
+using System.Data;
 
 namespace Bootcamp.Repository.Concrete
 {

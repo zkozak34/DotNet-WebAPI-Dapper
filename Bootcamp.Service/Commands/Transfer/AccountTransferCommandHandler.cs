@@ -1,8 +1,8 @@
 ﻿using Bootcamp.Core.Dtos.ResponseDto;
-using MediatR;
-using System.Data;
 using Bootcamp.Repository.Abstract;
 using Bootcamp.Repository.Concrete;
+using MediatR;
+using System.Data;
 
 namespace Bootcamp.Service.Commands.Transfer
 {

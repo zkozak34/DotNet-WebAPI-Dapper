@@ -1,5 +1,6 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Bootcamp.Repository.Concrete;
 using Bootcamp.Service.DependecyResolvers.Autofac;
 using Bootcamp.WebAPI.Filters;
 using Bootcamp.WebAPI.Middlewares;
@@ -8,15 +9,14 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using System.Data;
-using System.Reflection;
-using Bootcamp.Repository.Concrete;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => { builder.RegisterModule(new AutofacBusinessModule()); });
 
-builder.Services.AddControllers(options => options.Filters.Add(new ValidateFilter())).AddFluentValidation(x => x.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
+builder.Services.AddControllers(options => options.Filters.Add(new ValidateFilter()))
+    .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ServiceProvider>());
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
@@ -29,8 +29,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<CheckProductIdActionFilter>();
 
 builder.Services.AddScoped<IDbConnection>(serviceProvider => new NpgsqlConnection(builder.Configuration.GetConnectionString("Postgresql")));
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddMediatR(typeof(ServiceProvider));
+builder.Services.AddAutoMapper(typeof(ServiceProvider));
 builder.Services.AddScoped<IDbTransaction>(serviceProvider =>
 {
     var connection = serviceProvider.GetRequiredService<IDbConnection>();
